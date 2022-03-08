@@ -3,11 +3,18 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
 
+class Category(models.TextChoices):
+    SAD = 'SA', ('Sad')
+    LOVE = 'LO', ('Love')
+    NATURE = 'NA', ('Nature')
+    LIFE = 'LI', ('Life')
+
 
 class Post(models.Model):
     title = models.CharField(max_length = 100)
     content = models.TextField()
     date_posted = models.DateTimeField(default = timezone.now)
+    category = models.CharField(max_length = 30, choices=Category.choices, default="")
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):

@@ -1,3 +1,4 @@
+from unicodedata import category
 from django.shortcuts import render, get_object_or_404
 from .models import Post
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -24,7 +25,15 @@ class UserPostListView(ListView):
         user = get_object_or_404(User, username = self.kwargs.get("username"))
         return Post.objects.filter(author = user).order_by('-date_posted')
         
+class CategoryPostListView(ListView):
+    model = Post
+    template_name = "blog/home.html"
+    context_object_name = 'posts'
+    paginate_by = 5
 
+    def get_queryset(self):
+        #user = get_object_or_404(User, username = self.kwargs.get("username"))
+        return Post.objects.filter(category = self.kwargs.get("category")).order_by('-date_posted')
 
 
 class PostListView(ListView):
