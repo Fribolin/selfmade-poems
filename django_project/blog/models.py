@@ -10,7 +10,8 @@ class Category(models.TextChoices):
     LIFE = 'LI', ('Life')
 
 class Comment(models.Model):
-    content = models.TextField()
+    name = models.CharField(max_length=80, default="")
+    body = models.TextField()
     date_posted = models.DateTimeField(default = timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
