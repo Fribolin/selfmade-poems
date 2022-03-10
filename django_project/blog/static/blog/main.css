@@ -1,6 +1,7 @@
 body {
     background: #fafafa;
     color: #333333;
+    font-family: "Times New Roman";
   }
 
   .flex-wrapper-row {
@@ -29,7 +30,7 @@ body {
   }
   
   .bg-steel {
-    background-color: #5f788a;
+    background-color: #aa4a43;
   }
   
   .site-header .navbar-nav .nav-link {
@@ -118,9 +119,10 @@ body {
     min-width: 250px;
     max-width: 250px;
     min-height: 100vh;
-    background: #5f788a;
+    background: #aa4a43;
     color: #fff;
     transition: all 0.3s;
+    text-align: center;
   }
 
   #sidebar ul.components {
@@ -134,8 +136,8 @@ body {
   }
 
   #sidebar ul li a {
-    padding: 10px;
-    font-size: 1.1em;
+    padding: 50px 10px;
+    font-size: 1.5em;
     display: block;
   }
 
