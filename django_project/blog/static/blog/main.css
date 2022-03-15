@@ -13,13 +13,6 @@ body {
     display: flex;
     flex-direction: column;
   }
-
-  #header-banner {
-    text-align: center;
-    font-size: 80px;
-    height: 150px;
-    background-color: yellowgreen;
-  }
   
   h1, h2, h3, h4, h5, h6 {
     color: #444444;
@@ -131,6 +124,7 @@ body {
   }
 
   #sidebar ul p {
+    background: #b46661;
     color: #fff;
     padding: 10px;
   }
@@ -139,15 +133,15 @@ body {
     padding: 50px 10px;
     font-size: 1.5em;
     display: block;
+    color: #cbd5db;
   }
 
   #sidebar ul li a:hover {
-    color: #7386D5;
-    background: #fff;
+    background: #b46661;
   }
 
-  #sidebar ul li.active > a, a[aria-expanded="true"] {
-    color: #fff;
+  #sidebar ul li.active > a {
+    color: #cbd5db;
   }
 
   ul ul a {
@@ -158,18 +152,6 @@ body {
     
   #sidebar.active {
     margin-left: -250px;
-  }
-
-  a[data-toggle="collapse"] {
-    position: relative;
-  }
-  
-  .dropdown-toggle::after {
-    display: block;
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
   }
 
   @media (max-width: 768px) {
