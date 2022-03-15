@@ -26,16 +26,33 @@ class UserPostListView(ListView):
         user = get_object_or_404(User, username = self.kwargs.get("username"))
         return Post.objects.filter(author = user).order_by('-date_posted')
         
-class CategoryPostListView(ListView):
+class CategorySadPostListView(ListView):
     model = Post
-    template_name = "blog/category.html"
+    template_name = "blog/sad.html"
     context_object_name = 'posts'
+    ordering = ['-date_posted']
     paginate_by = 5
 
-    def get_queryset(self):
-        #user = get_object_or_404(User, username = self.kwargs.get("username"))
-        return Post.objects.filter(category = self.kwargs.get("category")).order_by('-date_posted')
+class CategoryLifePostListView(ListView):
+    model = Post
+    template_name = "blog/life.html"
+    context_object_name = 'posts'
+    ordering = ['-date_posted']
+    paginate_by = 5
 
+class CategoryLovePostListView(ListView):
+    model = Post
+    template_name = "blog/love.html"
+    context_object_name = 'posts'
+    ordering = ['-date_posted']
+    paginate_by = 5
+
+class CategoryNaturePostListView(ListView):
+    model = Post
+    template_name = "blog/nature.html"
+    context_object_name = 'posts'
+    ordering = ['-date_posted']
+    paginate_by = 5
 
 class PostListView(ListView):
     model = Post
