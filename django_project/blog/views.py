@@ -28,7 +28,7 @@ class UserPostListView(ListView):
         
 class CategoryPostListView(ListView):
     model = Post
-    template_name = "blog/home.html"
+    template_name = "blog/category.html"
     context_object_name = 'posts'
     paginate_by = 5
 
