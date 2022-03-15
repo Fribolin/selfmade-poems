@@ -21,6 +21,10 @@
             {% if user.is_authenticated %}
                 {% if user in post.favorite.all %}
                     <i id="favorite-button" class="bi bi-bookmark-heart-fill float-right"></i>
+                    <form action = "{% url 'not-favorite-post' object.id %} " method="POST">
+                        {% csrf_token %}
+                        <input type="submit" class="btn" value="Remove from Favorite" name="not-favorite">
+                    </form>
                 {% else %}
                     <form action = "{% url 'favorite-post' object.id %} " method="POST">
                         {% csrf_token %}

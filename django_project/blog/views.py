@@ -1,5 +1,5 @@
 from unicodedata import category
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post, Comment
 from .forms import CommentForm
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -13,9 +13,6 @@ def home(request):
     }
     return render(request, 'blog/home.html', context)
 
-def about(request):
-    return render(request, 'blog/about.html', {'title': 'about'})
-
 def favorite_post(request, fav_id):
     post = get_object_or_404(Post, id=fav_id)
 
@@ -26,7 +23,19 @@ def favorite_post(request, fav_id):
     if request.method == 'POST': #Then add this video to users' favourite
         post.favorite.add(request.user)
 
-    return render(request, 'blog/home.html', context)
+    return redirect(request.META['HTTP_REFERER'])
+
+def not_favorite_post(request, fav_id):
+    post = get_object_or_404(Post, id=fav_id)
+
+    context = {
+        'posts': Post.objects.all()
+    }
+    
+    if request.method == 'POST': #Then add this video to users' favourite
+        post.favorite.remove(request.user)
+
+    return redirect(request.META['HTTP_REFERER'])
 
 class UserPostListView(ListView):
     model = Post
