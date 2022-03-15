@@ -13,7 +13,9 @@
                     <a style="font-size: 14px; color: #757373; margin-top: auto; margin-bottom: auto; margin-left: 20px;">Category: {{ post.category }}</a>
                 </div>
                 <p class="article-content">{{ post.content }}</p>
+                {% if user in post.favorite.all %}
                 <i id="favorite-button" class="bi bi-bookmark-heart-fill float-right"></i>
+                {% endif %}
             </div>
         </article>
     {%endfor%}

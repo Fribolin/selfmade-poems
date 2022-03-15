@@ -16,6 +16,18 @@ def home(request):
 def about(request):
     return render(request, 'blog/about.html', {'title': 'about'})
 
+def favorite_post(request, fav_id):
+    post = get_object_or_404(Post, id=fav_id)
+
+    context = {
+        'posts': Post.objects.all()
+    }
+    
+    if request.method == 'POST': #Then add this video to users' favourite
+        post.favorite.add(request.user)
+
+    return render(request, 'blog/home.html', context)
+
 class UserPostListView(ListView):
     model = Post
     template_name = "blog/user_posts.html"

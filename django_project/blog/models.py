@@ -15,6 +15,7 @@ class Post(models.Model):
     date_posted = models.DateTimeField(default = timezone.now)
     category = models.CharField(max_length = 30, choices=Category.choices, default="")
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    favorite = models.ManyToManyField(User, related_name="fav_posts", blank=True)
     #comments = models.ManyToManyField(Comment)
 
     def __str__(self):
