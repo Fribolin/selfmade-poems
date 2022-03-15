@@ -1,7 +1,10 @@
 from unicodedata import name
 from django.urls import path
 from .views import (
-    CategoryPostListView, 
+    CategorySadPostListView, 
+    CategoryLovePostListView, 
+    CategoryLifePostListView, 
+    CategoryNaturePostListView, 
     PostListView, 
     PostDetailView, 
     PostCreateView, 
@@ -23,7 +26,9 @@ urlpatterns = [
     path('post/<int:pk>/update/', PostUpdateView.as_view() , name = 'post-update'),
     path('post/<int:pk>/delete/', PostDeleteView.as_view() , name = 'post-delete'),
     path('user/<str:username>', UserPostListView.as_view() , name = 'user-posts'),
-    path('category/<str:category>', CategoryPostListView.as_view() , name = 'category-posts'),
-
+    path('category/Sad', CategorySadPostListView.as_view() , name = 'category-sad-posts'),
+    path('category/Nature', CategoryNaturePostListView.as_view() , name = 'category-nature-posts'),
+    path('category/Life', CategoryLifePostListView.as_view() , name = 'category-life-posts'),
+    path('category/Love', CategoryLovePostListView.as_view() , name = 'category-love-posts'),
     path('post/<int:pk>/comment/new/', CommentCreateView.as_view() , name = 'comment-create')
 ]
