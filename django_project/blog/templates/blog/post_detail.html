@@ -21,14 +21,14 @@
             {% if user.is_authenticated %}
                 {% if user in post.favorite.all %}
                     <i id="favorite-button" class="bi bi-bookmark-heart-fill float-right"></i>
-                    <form action = "{% url 'not-favorite-post' object.id %} " method="POST">
+                    <form action = "{% url 'remove-favorite' object.id %} " method="POST">
                         {% csrf_token %}
-                        <input type="submit" class="btn" value="Remove from Favorite" name="not-favorite">
+                        <input type="submit" class="btn btn-secondary" value="Remove from Favorites" name="remove-favorite">
                     </form>
                 {% else %}
-                    <form action = "{% url 'favorite-post' object.id %} " method="POST">
+                    <form action = "{% url 'add-favorite' object.id %} " method="POST">
                         {% csrf_token %}
-                        <input type="submit" class="btn" value="Add to Favorite" name="favorite">
+                        <input type="submit" class="btn btn-secondary" value="Add to Favorites" name="add-favorite">
                     </form>
                 {% endif %}
             {% endif %}

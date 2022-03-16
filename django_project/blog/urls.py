@@ -15,15 +15,14 @@ from .views import (
     CommentCreateView, 
     CommentUpdateView, 
     CommentDeleteView, 
-    UserCommentListView,
-    favorite_post)
+    UserCommentListView)
 from . import views
 
 urlpatterns = [
     path('', PostListView.as_view() , name = 'blog-home'),
     path('post/<int:pk>/', PostDetailView.as_view() , name = 'post-detail'),
-    path('post/<int:fav_id>/favorite', views.favorite_post , name = 'favorite-post'),
-    path('post/<int:fav_id>/not-favorite', views.not_favorite_post , name = 'not-favorite-post'),
+    path('post/<int:fav_id>/add-favorite', views.add_favorite , name = 'add-favorite'),
+    path('post/<int:fav_id>/remove-favorite', views.remove_favorite , name = 'remove-favorite'),
     path('post/new/', PostCreateView.as_view() , name = 'post-create'),
     path('post/<int:pk>/update/', PostUpdateView.as_view() , name = 'post-update'),
     path('post/<int:pk>/delete/', PostDeleteView.as_view() , name = 'post-delete'),

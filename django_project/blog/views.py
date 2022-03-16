@@ -13,24 +13,16 @@ def home(request):
     }
     return render(request, 'blog/home.html', context)
 
-def favorite_post(request, fav_id):
+def add_favorite(request, fav_id):
     post = get_object_or_404(Post, id=fav_id)
-
-    context = {
-        'posts': Post.objects.all()
-    }
     
     if request.method == 'POST': #Then add this video to users' favourite
         post.favorite.add(request.user)
 
     return redirect(request.META['HTTP_REFERER'])
 
-def not_favorite_post(request, fav_id):
+def remove_favorite(request, fav_id):
     post = get_object_or_404(Post, id=fav_id)
-
-    context = {
-        'posts': Post.objects.all()
-    }
     
     if request.method == 'POST': #Then add this video to users' favourite
         post.favorite.remove(request.user)
